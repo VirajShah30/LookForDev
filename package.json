@@ -1,0 +1,19 @@
+{
+  "name": "lookfordev",
+  "version": "1.0.0",
+  "description": "A web app to find developers",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VirajShah30/LookForDev.git"
+  },
+  "author": "Viraj Shah, Mayank Shetty",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/VirajShah30/LookForDev/issues"
+  },
+  "homepage": "https://github.com/VirajShah30/LookForDev#readme"
+}
