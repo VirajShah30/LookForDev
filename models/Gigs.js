@@ -14,7 +14,7 @@ const Gig = db.define('gig', {
   budget: {
     type: Sequelize.STRING
   },
-  contact_email: {
+  contact: {
     type: Sequelize.STRING
   }
 });
