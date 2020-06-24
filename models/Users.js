@@ -39,7 +39,7 @@ const User = db.define('user', {
   },
   timestamp: {
     type: Sequelize.DATE,
-    allowNull: false
+    allowNull: true
   }
 });
 

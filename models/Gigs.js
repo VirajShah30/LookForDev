@@ -33,7 +33,7 @@ const Gig = db.define('gig', {
   },
   timestamp: {
     type: Sequelize.DATE,
-    allowNull: false
+    allowNull: true
   }
 });
 

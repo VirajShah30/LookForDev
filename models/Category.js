@@ -8,20 +8,20 @@ const Category = db.define('category', {
     autoIncrement: true
   },
   parent: {
-	type: Sequelize.INTEGER,
-	allowNull: false
+	  type: Sequelize.INTEGER,
+	  allowNull: false
   },
   name: {
-	type: Sequelize.STRING,
-	allowNull: false
+	  type: Sequelize.STRING,
+	  allowNull: false
   },
   status: {
     type: Sequelize.BOOLEAN,
-	allowNull: false
+	  allowNull: false
   },
   timestamp: {
     type: Sequelize.DATE,
-	allowNull: false
+	  allowNull: true
   }
 });
 

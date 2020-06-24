@@ -46,7 +46,7 @@ const Dev = db.define('dev', {
   },
   timestamp: {
     type: Sequelize.DATE,
-    allowNull: false
+    allowNull: true
   }
 });
 

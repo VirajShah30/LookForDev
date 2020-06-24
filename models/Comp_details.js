@@ -29,7 +29,7 @@ const Comp_details = db.define('comp_details', {
   },
   timestamp: {
     type: Sequelize.DATE,
-	allowNull: false
+	  allowNull: true
   }
 });
 
