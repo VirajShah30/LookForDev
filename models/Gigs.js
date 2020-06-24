@@ -8,7 +8,8 @@ const Gig = db.define('gig', {
     autoIncrement: true
   },
   title: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    allowNull: false
   },
   category_id: {
     type: Sequelize.INTEGER,
@@ -19,16 +20,20 @@ const Gig = db.define('gig', {
     allowNull: false
   },
   desc: {
-    type: Sequelize.STRING
+    type: Sequelize.TEXT,
+    allowNull: false
   },
   budget: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    allowNull: false
   },
   status: {
-    type: Sequelize.BOOLEAN
+    type: Sequelize.BOOLEAN,
+    allowNull: false
   },
   timestamp: {
-    type: Sequelize.DATE
+    type: Sequelize.DATE,
+    allowNull: false
   }
 });
 

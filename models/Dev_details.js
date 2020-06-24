@@ -12,7 +12,7 @@ const Dev = db.define('dev', {
     allowNull: false
   },
   des: {
-    type: Sequelize.STRING,
+    type: Sequelize.TEXT,
     allowNull: false
   },
   achievement: {
@@ -20,7 +20,7 @@ const Dev = db.define('dev', {
     allowNull: false
   },
   resume_link: {
-    type: Sequelize.STRING,
+    type: Sequelize.TEXT,
     allowNull: false
   },
   experience: {
@@ -28,23 +28,25 @@ const Dev = db.define('dev', {
     allowNull: false
   },
   linkedin_link: {
-    type: Sequelize.STRING
+    type: Sequelize.TEXT
   },
   twitter_link: {
-    type: Sequelize.STRING
+    type: Sequelize.TEXT
   },
   facebook_link: {
-    type: Sequelize.STRING
+    type: Sequelize.TEXT
   },
   category_id: {
     type: Sequelize.INTEGER,
     allowNull: false
   },
   status: {
-    type: Sequelize.BOOLEAN
+    type: Sequelize.BOOLEAN,
+    allowNull: false
   },
   timestamp: {
-    type: Sequelize.DATE
+    type: Sequelize.DATE,
+    allowNull: false
   }
 });
 

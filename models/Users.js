@@ -8,11 +8,11 @@ const User = db.define('user', {
     autoIncrement: true
   },
   email: {
-    type: Sequelize.STRING,
+    type: Sequelize.TEXT,
     allowNull: false
   },
   password: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.TEXT,
     allowNull: false
   },
   fullname: {
@@ -24,7 +24,8 @@ const User = db.define('user', {
     allowNull: false
   },
   user_avatar: {
-    type: Sequelize.STRING
+    type: Sequelize.TEXT,
+    allowNull: false
   },
   gender: {
     type: Sequelize.BOOLEAN
@@ -33,10 +34,12 @@ const User = db.define('user', {
     type: Sequelize.DATE
   },
   status: {
-    type: Sequelize.BOOLEAN
+    type: Sequelize.BOOLEAN,
+    allowNull: false
   },
   timestamp: {
-    type: Sequelize.DATE
+    type: Sequelize.DATE,
+    allowNull: false
   }
 });
 
