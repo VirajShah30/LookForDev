@@ -23,7 +23,7 @@ const Category = db.define('category', {
     type: Sequelize.DATE,
 	  allowNull: true
   }
-});
+}, {timestamps: false});
 
 Category.associate = function(models) {
   

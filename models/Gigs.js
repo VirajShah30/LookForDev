@@ -35,7 +35,7 @@ const Gig = db.define('gig', {
     type: Sequelize.DATE,
     allowNull: true
   }
-});
+}, {timestamps: false});
 
 Gig.associate = function(models) {
   

@@ -15,7 +15,7 @@ const User = db.define('user', {
     type: Sequelize.TEXT,
     allowNull: false
   },
-  fullname: {
+  full_name: {
     type: Sequelize.STRING,
     allowNull: false
   },
@@ -41,7 +41,7 @@ const User = db.define('user', {
     type: Sequelize.DATE,
     allowNull: true
   }
-});
+}, {timestamps: false});
 
 User.associate = function(models) {
   

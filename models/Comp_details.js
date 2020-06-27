@@ -31,7 +31,7 @@ const Comp_details = db.define('comp_details', {
     type: Sequelize.DATE,
 	  allowNull: true
   }
-});
+}, {timestamps: false});
 
 Comp_details.associate = function(models) {
   

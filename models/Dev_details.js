@@ -48,7 +48,7 @@ const Dev = db.define('dev', {
     type: Sequelize.DATE,
     allowNull: true
   }
-});
+}, {timestamps: false});
 
 Dev.associate = function(models) {
   
