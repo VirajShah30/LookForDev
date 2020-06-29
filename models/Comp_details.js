@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const db = require('../config/database');
 
-const Comp_details = db.define('comp_details', {
+const Comp = db.define('comp_details', {
   id: {
     type: Sequelize.INTEGER(11),
     primaryKey: true,
@@ -33,8 +33,8 @@ const Comp_details = db.define('comp_details', {
   }
 }, {timestamps: false});
 
-Comp_details.associate = function(models) {
+Comp.associate = function(models) {
   
 }
 
-module.exports = Comp_details;
+module.exports = Comp;
