@@ -9,7 +9,7 @@ const Dev = require('./models/Dev_Details')
 const Comp = require('./models/Comp_Details')
 var cors = require('cors');
 const db = require('./config/database');
-
+const User = require('./models/Users');
 var app = express();
 app.use(cors());
 
@@ -53,14 +53,32 @@ app.use(bodyParser.json());
 //User Login
 app.post('/login', async(req, res)=>
 {
-  Users.findOne({
-    where: {
-      email: 
-
+  try{
+    const { body } = req;
+    const user = await User.findOne({
+    where:{
+      email : body.email
     }
   })
-
-}8
+  console.log(user);
+  if(user.password == body.password)
+  {
+    return res.status(200).json(
+      {
+        msg: 'User Found',
+        data: user,
+        status: true
+      }
+    )
+  }
+  }
+  catch(err)
+  {
+    return  res.status(500).json({
+      err
+    })
+  }
+})
 
 //Basic registration for any user
 app.post('/register', async(req , res)=>
