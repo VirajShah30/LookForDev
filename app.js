@@ -50,6 +50,18 @@ app.use(bodyParser.json());
 //   .catch(err => console.log( err))
 // })
 
+//User Login
+app.post('/login', async(req, res)=>
+{
+  Users.findOne({
+    where: {
+      email: 
+
+    }
+  })
+
+}8
+
 //Basic registration for any user
 app.post('/register', async(req , res)=>
 {
