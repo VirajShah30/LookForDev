@@ -51,7 +51,7 @@ app.use(bodyParser.json());
 // })
 
 //User Login
-app.post('/login', async(req, res)=>
+app.post('/signin', async(req, res)=>
 {
   try{
     const { body } = req;
