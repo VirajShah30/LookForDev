@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
@@ -10,6 +11,7 @@ const Comp = require('./models/Comp_Details')
 var cors = require('cors');
 const db = require('./config/database');
 const User = require('./models/Users');
+const jwt = require('jsonwebtoken');
 var app = express();
 app.use(cors());
 
@@ -63,11 +65,25 @@ app.post('/signin', async(req, res)=>
   console.log(user);
   if(user.password == body.password)
   {
+    console.log('password match', user.password , body.password);
+    const accessToken = jwt.sign( user.id , process.env.ACCESS_TOKEN_SECRET);
+    console.log('token generated' , accessToken);
     return res.status(200).json(
       {
         msg: 'User Found',
-        data: user,
+        data: {user, accessToken},
         status: true
+      }
+    )
+  }
+  else
+  {
+    console.log('password did not match',user.password, body.password);
+    return res.status(401).json(
+      {
+        msg: 'Password did not match',
+        data : {},
+        status: false
       }
     )
   }
