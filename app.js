@@ -12,14 +12,28 @@ var cors = require('cors');
 const db = require('./config/database');
 const User = require('./models/Users');
 const jwt = require('jsonwebtoken');
+//const config = require('./config/');
+const auth = require('./policy/auth.policy');
+const mapRoutes = require('express-routes-mapper');
+const publicRoutes = require('./config/routes/publicRoutes');
+const privateRoutes = require('./config/routes/privateRoutes');
+
 var app = express();
 app.use(cors());
+
+const mappedOpenRoutes = mapRoutes(publicRoutes, 'controllers/');
+const mappedAuthRoutes = mapRoutes(privateRoutes, 'controllers/');
 
 db.authenticate()
   .then(() => console.log('Database connected...'))
   .catch(err => console.log('Error: ' + err))
 
 app.use(bodyParser.json());
+
+app.all('/private/*', (req, res, next) => auth(req, res, next));
+app.use('/private', mappedAuthRoutes);
+
+app.use('/public', mappedOpenRoutes);
 
 // app.get('/',(req , res)=>
 // {
@@ -52,49 +66,7 @@ app.use(bodyParser.json());
 //   .catch(err => console.log( err))
 // })
 
-//User Login
-app.post('/signin', async(req, res)=>
-{
-  try{
-    const { body } = req;
-    const user = await User.findOne({
-    where:{
-      email : body.email
-    }
-  })
-  console.log(user);
-  if(user.password == body.password)
-  {
-    console.log('password match', user.password , body.password);
-    const accessToken = jwt.sign( user.id , process.env.ACCESS_TOKEN_SECRET);
-    console.log('token generated' , accessToken);
-    return res.status(200).json(
-      {
-        msg: 'User Found',
-        data: {user, accessToken},
-        status: true
-      }
-    )
-  }
-  else
-  {
-    console.log('password did not match',user.password, body.password);
-    return res.status(401).json(
-      {
-        msg: 'Password did not match',
-        data : {},
-        status: false
-      }
-    )
-  }
-  }
-  catch(err)
-  {
-    return  res.status(500).json({
-      err
-    })
-  }
-})
+
 
 //Basic registration for any user
 app.post('/register', async(req , res)=>
