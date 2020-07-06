@@ -31,7 +31,29 @@ const DevController = () =>
           })
         }
     }
-
-    return { registerDev }
+    const devDetails = async (req, res) => {
+      try {
+          const { body } = req;
+          const dev = await Dev.findOne({
+              where: {
+                  user_id: body.user_id,
+              }
+          })
+          console.log(comp);
+          return res.status(200).json(
+                  {
+                      msg: 'Developer Details',
+                      data: { dev },
+                      status: true
+                  }
+              )
+      }
+      catch (err) {
+          return res.status(500).json({
+              error: err
+          })
+      }
+  }
+    return { registerDev,devDetails }
 }
 module.exports = DevController;
