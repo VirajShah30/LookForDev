@@ -41,10 +41,10 @@ const UsersController = () => {
             })
         }
     }
-    const register = async (res, req) => {
-        const { body } = req;
-        console.log('Body var', req.body);
+    const register = async (req, res) => {
         try {
+            const { body } = req;
+            console.log(' Reg Body var', body);
             const user = await Users.create({
                 email: body.email,
                 password: body.password,

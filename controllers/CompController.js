@@ -1,6 +1,6 @@
 const Comp = require('../models/Comp_details')
 const CompController = () => {
-    const registerComp = async (res, req) => {
+    const registerComp = async (req, res) => {
         const { body } = req;
         console.log('Body var', req.body);
         try {
@@ -23,6 +23,29 @@ const CompController = () => {
             })
         }
     }
-    return { registerComp }
+    const compDetails = async (req, res) => {
+        try {
+            const { body } = req;
+            const comp = await Comp.findOne({
+                where: {
+                    user_id: body.user_id,
+                }
+            })
+            console.log(comp);
+            return res.status(200).json(
+                    {
+                        msg: 'Company Details',
+                        data: { comp },
+                        status: true
+                    }
+                )
+        }
+        catch (err) {
+            return res.status(500).json({
+                error: err
+            })
+        }
+    }
+    return { registerComp, compDetails }
 }
 module.exports = CompController;

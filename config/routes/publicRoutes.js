@@ -6,6 +6,7 @@ const publicRoutes = {
     'POST /register' : 'UsersController.register',
     'POST /registerDev' : 'DevController.registerDev',
     'POST /registerComp' : 'CompController.registerComp',
+    //Must be private
 }
 
 module.exports = publicRoutes;

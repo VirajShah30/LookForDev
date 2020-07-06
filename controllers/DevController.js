@@ -1,7 +1,7 @@
 const Dev = require('../models/Dev_Details')
 const DevController = () =>
 {
-    const registerDev = async (res, req) => 
+    const registerDev = async (req, res) => 
     {
         const { body } = req;
         console.log('Body var',req.body);
