@@ -1,4 +1,6 @@
 const Sequelize = require('sequelize');
+const Dev = require('./Dev_Details');
+const Comp = require('./Comp_Details');
 const db = require('../config/database');
 
 const User = db.define('user', {
@@ -44,7 +46,8 @@ const User = db.define('user', {
 }, {timestamps: false});
 
 User.associate = function(models) {
-  
+  models.User.hasMany(models.Dev, {foreignKey: 'user_id'});
+  // models.User.hasMany(models.Comp, {foreignKey: 'user_id'})
 }
 
 // Gig.sync().then(() => {

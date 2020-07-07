@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 const db = require('../config/database');
+// const Users = require('Users');
 
 const Comp = db.define('comp_details', {
   id: {
@@ -34,7 +35,7 @@ const Comp = db.define('comp_details', {
 }, {timestamps: false});
 
 Comp.associate = function(models) {
-  
+  // Comp.belongsTo(Users, {foreignKey: 'user_id'});
 }
 
 module.exports = Comp;

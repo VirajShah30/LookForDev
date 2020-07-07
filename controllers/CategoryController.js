@@ -9,7 +9,7 @@
                     status: 1,
                 }
             })
-            console.log(comp);
+            console.log(category);
             return res.status(200).json(
                     {
                         msg: 'Categories',

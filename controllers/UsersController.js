@@ -1,6 +1,9 @@
 //const models = require('../models');
 const jwt = require('jsonwebtoken');
 const Users = require('../models/Users')
+const Dev = require('../models/Dev_Details');
+const Comp = require('../models/Comp_Details');
+
 const UsersController = () => {
     const signin = async (req, res) => {
         //User Login
@@ -69,6 +72,33 @@ const UsersController = () => {
             })
         }
     }
-    return { signin, register }
+
+    const getUsers = async (req, res) => {
+        try {
+            const getusers = await Users.findAll({
+                where: {
+                    status: 1,
+                }, include: {
+                    model: Dev,
+                }
+            });
+            console.log(getusers);
+            return res.status(200).json(
+                {
+                    msg: 'All Users',
+                    data: getusers ,
+                    status: true
+                }
+            )
+        }
+        catch (err) {
+            return res.status(500).json({
+                err
+            })
+        }
+    }
+
+    return { signin, register, getUsers }
+    
 }
 module.exports = UsersController;
