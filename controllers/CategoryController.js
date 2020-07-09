@@ -1,10 +1,11 @@
- const Category = require('../models/Category')
+ //const models.Category = require('../models/models.Category')
+ const models = require('../models');
  const CategoryController = () =>
 {
     const getCategory = async (req, res) => 
     {
         try {
-            const category = await Category.findAll({
+            const category = await models.Category.findAll({
                 where: {
                     status: 1,
                 }

@@ -1,15 +1,17 @@
 //const models = require('../models');
 const jwt = require('jsonwebtoken');
-const Users = require('../models/Users')
-const Dev = require('../models/Dev_Details');
-const Comp = require('../models/Comp_Details');
+const models = require('../models');
+//const Users = require('../models/Users')
+// const Dev = require('../models/Dev_Details');
+// const Comp = require('../models/Comp_Details');
 
 const UsersController = () => {
     const signin = async (req, res) => {
         //User Login
         try {
             const { body } = req;
-            const user = await Users.findOne({
+            console.log(body);
+            const user = await models.Users.findOne({
                 where: {
                     email: body.email
                 }
@@ -48,7 +50,7 @@ const UsersController = () => {
         try {
             const { body } = req;
             console.log(' Reg Body var', body);
-            const user = await Users.create({
+            const user = await models.Users.create({
                 email: body.email,
                 password: body.password,
                 full_name: body.full_name,
@@ -75,12 +77,18 @@ const UsersController = () => {
 
     const getUsers = async (req, res) => {
         try {
-            const getusers = await Users.findAll({
+            const getusers = await models.Users.findAll({
                 where: {
-                    status: 1,
-                }, include: {
-                    model: Dev,
-                }
+                    status: 1
+                }, 
+                include: [
+                    {
+                        model: models.DevDetails
+                    },
+                    {
+                        model: models.CompDetails
+                    }
+                ]
             });
             console.log(getusers);
             return res.status(200).json(
@@ -93,7 +101,7 @@ const UsersController = () => {
         }
         catch (err) {
             return res.status(500).json({
-                err
+                error:"err" + err 
             })
         }
     }

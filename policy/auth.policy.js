@@ -35,14 +35,14 @@ module.exports = (req, res, next) => {
     }
 
     else {
-        return req.status(401).json({
+        return res.status(401).json({
             msg: "JWT Authorization Failed!: No authorization was found."
         })
     }
 
     return JWTService.verify(tokenVerify, (err, token) => {
         if (err) {
-            return req.status(400).json({
+            return res.status(400).json({
                 msg: err.name,
                 status: false
             })

@@ -1,6 +1,6 @@
-const CompController = require("../../controllers/CompController");
-const GigsController = require("../../controllers/GigsController");
-const DevController = require("../../controllers/DevController");
+// const CompController = require("../../controllers/CompController");
+// const GigsController = require("../../controllers/GigsController");
+// const DevController = require("../../controllers/DevController");
 const privateRoutes = {
     'POST /compDetails' : 'CompController.compDetails',
     'POST /devDetails' : 'DevController.devDetails',

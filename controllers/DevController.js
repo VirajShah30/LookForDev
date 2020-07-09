@@ -1,4 +1,5 @@
-const Dev = require('../models/Dev_Details')
+//const models.DevDetails = require('../models/Dev_Details')
+const models = require('../models');
 const DevController = () =>
 {
     const registerDev = async (req, res) => 
@@ -6,7 +7,7 @@ const DevController = () =>
         const { body } = req;
         console.log('Body var',req.body);
         try{
-          const dev = await Dev.create({
+          const dev = await models.DevDetails.create({
             user_id: body.user_id,
             des: body.des,
             achievement: body.achievement,
@@ -34,7 +35,7 @@ const DevController = () =>
     const devDetails = async (req, res) => {
       try {
           const { body } = req;
-          const dev = await Dev.findOne({
+          const dev = await models.DevDetails.findOne({
               where: {
                   user_id: body.user_id,
               }
