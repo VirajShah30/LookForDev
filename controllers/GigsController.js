@@ -12,7 +12,7 @@ const GigsController  = () =>
                 comp_id:body.comp_id,
                 desc:body.desc,
                 budget:body.budget,
-                status:1
+                status:'1'
             });
             if (gig) return res.status(200).json({
                 msg: 'Success!',
@@ -21,6 +21,7 @@ const GigsController  = () =>
             })
         }
         catch (err) {
+            console.log(err)
             return res.status(500).json({
                 error:'err'+ err
             })
@@ -29,6 +30,7 @@ const GigsController  = () =>
     const getCompGigs = async (req, res) => {
         try{
             const { body } = req;
+            console.log('body var', body);
             const gig = await models.Gigs.findAll({
                 where: {
                     comp_id:body.comp_id,
@@ -38,14 +40,14 @@ const GigsController  = () =>
             return res.status(200).json(
                 {
                     msg: 'Companymodels.models.Gigs',
-                    data: { gig },
+                    data:  gig ,
                     status: true
                 }
             )
         }
         catch(err){
             return res.status(500).json({
-                err
+                'error' : err
             })
         }
     }
@@ -61,7 +63,7 @@ const GigsController  = () =>
             return res.status(200).json(
                 {
                     msg: 'Devloper CategoryGigs',
-                    data: { gig },
+                    data: gig ,
                     status: true
                 }
             )
