@@ -8,7 +8,7 @@ const GigsController  = () =>
         try {
             const gig = await models.Gigs.create({
                 title:body.title,
-                category_id: 1,
+                category_id: 2,
                 comp_id:body.comp_id,
                 desc:body.desc,
                 budget:body.budget,
@@ -54,7 +54,8 @@ const GigsController  = () =>
     const getDevGigs = async (req, res) => {
         try{
             const { body } = req;
-            const gig = await models.models.Gigs.findAll({
+            console.log('body var', body);
+            const gig = await models.Gigs.findAll({
                 where: {
                     category_id:body.category_id,
                 }

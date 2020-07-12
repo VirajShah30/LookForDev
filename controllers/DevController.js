@@ -35,12 +35,13 @@ const DevController = () =>
     const devDetails = async (req, res) => {
       try {
           const { body } = req;
+          console.log(body);
           const dev = await models.DevDetails.findOne({
               where: {
                   user_id: body.user_id,
               }
           })
-          console.log(comp);
+          console.log(dev);
           return res.status(200).json(
                   {
                       msg: 'Developer Details',
@@ -51,7 +52,7 @@ const DevController = () =>
       }
       catch (err) {
           return res.status(500).json({
-              error: err
+              error: 'error', err
           })
       }
   }
