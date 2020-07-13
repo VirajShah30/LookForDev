@@ -1,5 +1,6 @@
 // const models.CompDetails = require('../models/Comp_details')
 const models = require('../models');
+const jwt = require('jsonwebtoken');
 const CompController = () => {
     const registerComp = async (req, res) => {
         const { body } = req;
@@ -12,9 +13,10 @@ const CompController = () => {
                 des: body.des,
                 status: '1'
             });
+            const accessToken = await jwt.sign(body.user_id, process.env.ACCESS_TOKEN_SECRET);
             if (comp) return res.status(200).json({
                 msg: 'Success!',
-                data: comp,
+                data: {comp,accessToken},
                 status: true
             })
         }

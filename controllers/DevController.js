@@ -1,5 +1,6 @@
 //const models.DevDetails = require('../models/Dev_Details')
 const models = require('../models');
+const jwt = require('jsonwebtoken');
 const DevController = () =>
 {
     const registerDev = async (req, res) => 
@@ -16,12 +17,13 @@ const DevController = () =>
             linkedin_link: body.linkedin_link,
             twitter_link: body.twitter_link,
             facebook_link: body.facebook_link,
+            category_id:body.category_id,
             status:'1',
-            category_id:'1',
           });
+          const accessToken = await jwt.sign(body.user_id, process.env.ACCESS_TOKEN_SECRET);
           if (dev) return res.status(200).json({
             msg: 'Success!',
-            data: dev,
+            data: {dev, accessToken},
             status: true
           })
         }

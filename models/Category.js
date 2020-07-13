@@ -6,31 +6,23 @@ module.exports = ( sequelize, DataTypes) => {
             type: Sequelize.INTEGER(11),
             primaryKey: true,
             autoIncrement: true
-        },
-        user_id: {
+          },
+          parent: {
             type: Sequelize.INTEGER,
             allowNull: false
-        },
-        comp_name: {
+          },
+          name: {
             type: Sequelize.STRING,
             allowNull: false
-        },
-        comp_logo: {
-            type: Sequelize.TEXT,
-            allowNull: false
-        },
-        des: {
-            type: Sequelize.TEXT,
-            allowNull: false  
-        },
-        status: {
+          },
+          status: {
             type: Sequelize.BOOLEAN,
             allowNull: false
-        },
-        timestamp: {
+          },
+          timestamp: {
             type: Sequelize.DATE,
-            allowNull: true
-        }
+            allowNull: false
+          }
     }, { tableName, timestamps: false });
     
     Category.associate = function (models) {

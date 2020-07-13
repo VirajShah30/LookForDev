@@ -8,7 +8,7 @@ const GigsController  = () =>
         try {
             const gig = await models.Gigs.create({
                 title:body.title,
-                category_id: 2,
+                category_id: body.category_id,
                 comp_id:body.comp_id,
                 desc:body.desc,
                 budget:body.budget,

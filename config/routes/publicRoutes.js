@@ -7,7 +7,7 @@ const publicRoutes = {
     'POST /register' : 'UsersController.register',
     'POST /registerDev' : 'DevController.registerDev',
     'POST /registerComp' : 'CompController.registerComp',
-    'POST /getCategories' : 'CategoryController.getCategory',
+    'GET /getCategories' : 'CategoryController.getCategory',
     'GET /getUsers' : 'UsersController.getUsers',
     //'POST /addGigs' : 'GigsController.addGigs',
 }
