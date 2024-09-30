@@ -26,7 +26,7 @@
     "express-handlebars": "^4.0.4",
     "express-routes-mapper": "^1.1.0",
     "jsonwebtoken": "^8.5.1",
-    "mysql2": "^2.1.0",
+    "mysql2": "^3.9.8",
     "pg": "^8.2.1",
     "pg-hstore": "^2.3.3",
     "sequelize": "^5.21.13"
